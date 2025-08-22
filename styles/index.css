@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Oxanium", sans-serif;
+    font-optical-sizing: auto;
+    color: white;
+}
+
+#container {
+    opacity: 0.9;
+    border-radius: 8px;
+    margin: 4vh auto;
+    padding: 6rem;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../assets/screen 1.png");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+#welcome-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+#welcome-subtitle {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+#welcome-phrase {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+#station-selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem;
+}
+
+.station-selection {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    min-width: 700px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgba(134, 213, 255, 0.5);
+    border: 3px solid #cae4ff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0px 12px rgba(162, 205, 255, 0.8);
+    transition: background-color 0.3s ease;
+}
+
+.station-selection:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,52 @@
+{
+    "DEA": {
+        "mission": "Diseñar un filtro que limpie el aire hasta niveles respirables.",
+        "variables": {
+            "humidity_pct": { "unit": "%", "min": 0, "max": 100 },
+            "temp_c": { "unit": "°C", "min": -10, "max": 60 },
+            "flow_L_min": { "unit": "L/min", "min": 0, "max": 40 },
+            "Silvatos": { "unit": "ml", "min": 0, "max": 5 },
+            "carbon_stage": { "unit": "on/off" }
+        },
+        "rules": [
+            {
+                "conditions": {
+                    "humidity_pct": { "min": 71 },
+                    "Silvatos": { "min": 1 }
+                },
+                "success": false,
+                "result": "Fallo: humedad alta con Silvatos genera gases tóxicos en el filtro."
+            },
+            {
+                "conditions": { "temp_c": { "min": 36 } },
+                "success": false,
+                "result": "Fallo: a más de 35°C el filtro pierde efectividad y deja pasar contaminantes."
+            },
+            {
+                "conditions": {
+                    "humidity_pct": { "min": 40, "max": 55 },
+                    "temp_c": { "min": 20, "max": 28 },
+                    "flow_L_min": { "min": 18, "max": 24 },
+                    "Silvatos": { "min": 2, "max": 2 },
+                    "carbon_stage": "on"
+                },
+                "success": true,
+                "result": "Éxito: aire limpio y estable; el sistema filtra partículas y óxidos reactivos."
+            },
+            {
+                "conditions": {
+                    "humidity_pct": { "min": 35, "max": 60 },
+                    "flow_L_min": { "min": 16, "max": 26 }
+                },
+                "success": false,
+                "result": "Parcial: filtración aceptable, pero hay picos de contaminantes. Ajusta humedad, flujo o temperatura."
+            },
+            {
+                "conditions": {},
+                "success": false,
+                "result": "Inconcluso: el sistema no consiguió limpiar el aire de manera suficiente."
+            }
+        ]
+    }
+}
+    

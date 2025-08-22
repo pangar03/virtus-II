@@ -1,0 +1,59 @@
+{
+    "DEF": {
+        "mission": "Hacer que la planta Adulicaris produzca la mayor cantidad de oxígeno posible.",
+        "variables": {
+            "XAF/778": { "unit": "ml", "min": 0, "max": 20 },
+            "Xitirin-12": { "unit": "ml", "min": 0, "max": 20 },
+            "Ixetornifin": { "unit": "ml", "min": 0, "max": 20 },
+            "light_lux": { "unit": "lux", "min": 0, "max": 3000 },
+            "humidity_pct": { "unit": "%", "min": 0, "max": 100 }
+        },
+        "rules": [
+            {
+                "conditions": {
+                    "XAF/778": { "min": 11 },
+                    "Xitirin-12": { "min": 1 }
+                },
+                "success": false,
+                "result": "Fallo: la combinación de XAF/778 > 10 ml con Xitirin-12 vuelve la tierra infértil; la planta muere."
+            },
+            {
+                "conditions": { "Ixetornifin": { "min": 11 } },
+                "success": false,
+                "result": "Fallo: el exceso de Ixetornifin daña el suelo y detiene la producción de oxígeno."
+            },
+            {
+                "conditions": {
+                    "XAF/778": { "min": 8, "max": 10 },
+                    "Xitirin-12": { "min": 12, "max": 12 },
+                    "Ixetornifin": { "min": 10, "max": 10 },
+                    "light_lux": { "min": 1500, "max": 1700 },
+                    "humidity_pct": { "min": 60, "max": 70 }
+                },
+                "success": true,
+                "result": "Éxito: la Adulicaris produce oxígeno de forma sostenida en baja luminosidad y suelo aireado."
+            },
+            {
+                "conditions": {
+                    "XAF/778": { "min": 8, "max": 12 },
+                    "light_lux": { "min": 1400, "max": 1800 },
+                    "humidity_pct": { "min": 55, "max": 75 }
+                },
+                "success": false,
+                "result": "Parcial: la planta mejora, pero el suelo o la humedad no son óptimos. Ajusta Xitirin-12 o Ixetornifin."
+            },
+            {
+                "conditions": {
+                    "light_lux": { "min": 1800}
+                },
+                "success": false,
+                "result": "Fallo: El exceso de luz quemó la fibra de la planta, generando la muerte de sus células; la planta murió en menos de 12 horas."
+            },
+            {
+                "conditions": {},
+                "success": false,
+                "result": "Inconcluso: no se observaron mejoras claras en producción de oxígeno."
+            }
+        ]
+    }
+}

@@ -1,0 +1,66 @@
+{
+    "DSAQ": {
+        "mission": "Formular un combustible que mantenga combustión estable por ≥ 3 minutos sin fallas.",
+        "variables": {
+            "Isonex-7": { "unit": "ml", "min": 0, "max": 40 },
+            "Tamporin-A": { "unit": "ml", "min": 0, "max": 40 },
+            "Silvatos": { "unit": "ml", "min": 0, "max": 5 },
+            "total_ml": { "unit": "ml", "min": 0, "max": 100 }
+        },
+        "rules": [
+            {
+                "conditions": { "Isonex-7": { "min": 21 } },
+                "success": false,
+                "result": "Fallo: el exceso de Isonex-7 vuelve la mezcla inestable y la combustión es errática."
+            },
+            {
+                "conditions": {
+                    "Isonex-7": { "min": 16 },
+                    "Tamporin-A": { "min": 16 }
+                },
+                "success": false,
+                "result": "Fallo: combinación corrosiva (Isonex-7 + Tamporin-A altos) destruye el recipiente."
+            },
+            {
+                "conditions": {
+                    "Silvatos": { "min": 5 }
+                },
+                "success": false,
+                "result": "Fallo: La llama perdió estabilidad antes de cumplir el tiempo."
+            },
+            {
+                "conditions": {
+                    "Isonex-7": { "min": 10, "max": 20 },
+                    "Tamporin-A": { "min": 10, "max": 15 },
+                    "Silvatos": { "min": 2, "max": 4 },
+                    "total_ml": { "min": 30, "max": 40 }
+                },
+                "success": true,
+                "result": "Éxito: combustión estable por más de 3 minutos con temperatura controlada."
+            },
+            {
+                "conditions": {
+                    "Isonex-7": { "min": 10, "max": 20 },
+                    "total_ml": { "min": 30, "max": 40 }
+                },
+                "success": false,
+                "result": "Parcial: la mezcla enciende y se mantiene, pero la duración es menor a 3 minutos. Ajusta Tamporin-A o Silvatos."
+            },
+            {
+                "conditions": {
+                    "Isonex-7": { "min": 0, "max": 0 },
+                    "Tamporin-A": { "min": 0, "max": 0 },
+                    "Silvatos": { "min": 0, "max": 0 },
+                    "total_ml": { "min": 0, "max": 0 }
+                },
+                "success": false,
+                "result": "Error: No se añadió ningún combustible."
+            },
+            {
+                "conditions": {},
+                "success": false,
+                "result": "Inconcluso: no se alcanzaron condiciones suficientes para una combustión estable."
+            }
+        ]
+    }
+}

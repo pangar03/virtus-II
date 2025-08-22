@@ -1,0 +1,55 @@
+{
+    "DGAM": {
+        "mission": "Extraer Aerolita-K pura sin contaminar el suelo.",
+        "variables": {
+            "Xitirin-12": { "unit": "ml", "min": 0, "max": 30 },
+            "flow_ml_min": { "unit": "ml/min", "min": 0, "max": 100 },
+            "ultrasonic_min": { "unit": "min", "min": 0, "max": 5 },
+            "Ixetornifin": { "unit": "ml", "min": 0, "max": 20 }
+        },
+        "rules": [
+            {
+                "conditions": { "Xitirin-12": { "min": 21 } },
+                "success": false,
+                "result": "Fallo: el exceso de Xitirin-12 contamina la Aerolita-K."
+            },
+            {
+                "conditions": {
+                    "Xitirin-12": { "min": 1 },
+                    "Ixetornifin": { "min": 11 }
+                },
+                "success": false,
+                "result": "Fallo: Xitirin-12 combinado con Ixetornifin > 10 ml fractura el mineral y baja la pureza."
+            },
+            {
+                "conditions": {
+                    "Xitirin-12": { "min": 10, "max": 15 },
+                    "flow_ml_min": { "min": 30, "max": 50 },
+                    "ultrasonic_min": { "min": 2, "max": 2 }
+                },
+                "success": true,
+                "result": "Éxito: extracción limpia, alta pureza y bajo residuo."
+            },
+            {
+                "conditions": {
+                    "ultrasonic_min": { "min": 3}
+                },
+                "success": false,
+                "result": "Fallo: Luego de 3 minutos de agitación, la Aerolita-K se fracturó; el mineral está roto y contaminado."
+            },
+            {
+                "conditions": {
+                    "Xitirin-12": { "min": 8, "max": 18 },
+                    "flow_ml_min": { "min": 25, "max": 55 }
+                },
+                "success": false,
+                "result": "Parcial: se extrae material útil, pero la pureza podría mejorar. Ajusta volumen o flujo."
+            },
+            {
+                "conditions": {},
+                "success": false,
+                "result": "Inconcluso: el procedimiento no logró extraer Aerolita-K de forma clara."
+            }
+        ]
+    }
+}

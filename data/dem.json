@@ -1,0 +1,62 @@
+{
+    "DEM": {
+        "mission": "Conseguir que la bacteria nativa produzca un antibiótico útil sin perder viabilidad.",
+        "variables": {
+            "temp_c": { "unit": "°C", "min": 0, "max": 45 },
+            "Ixetornifin": { "unit": "ml", "min": 0, "max": 20 },
+            "Silvatos": { "unit": "ml", "min": 0, "max": 5 },
+            "iron_pct": { "unit": "%", "min": 0, "max": 20 },
+            "amber_light_min": { "unit": "min", "min": 0, "max": 10 }
+        },
+        "rules": [
+            {
+                "conditions": { "Ixetornifin": { "min": 9 } },
+                "success": false,
+                "result": "Fallo: demasiada Ixetornifin mata la cepa; no hay producción antibiótica."
+            },
+            {
+                "conditions": {
+                    "Ixetornifin": { "min": 7 },
+                    "Silvatos": { "min": 1 }
+                },
+                "success": false,
+                "result": "Fallo: Ixetornifin > 6 ml combinado con Silvatos provoca mutación; se pierde la producción antibiótica."
+            },
+            {
+                "conditions": { "iron_pct": { "min": 6 } },
+                "success": false,
+                "result": "Fallo: exceso de hierro ambiental detiene el crecimiento de V-Helios."
+            },
+            {
+                "conditions": {
+                    "temp_c": { "min": 25, "max": 30 },
+                    "Ixetornifin": { "min": 6, "max": 8 },
+                    "Silvatos": { "min": 2, "max": 2 },
+                    "amber_light_min": { "min": 2, "max": 3 }
+                },
+                "success": true,
+                "result": "Éxito: producción antibiótica fuerte con buena viabilidad de V-Helios."
+            },
+            {
+                "conditions": {
+                    "temp_c": { "min": 24, "max": 32 },
+                    "Ixetornifin": { "min": 5, "max": 8 }
+                },
+                "success": false,
+                "result": "Parcial: hay producción antibiótica moderada. Ajusta luz ámbar, Silvatos o reduce hierro."
+            },
+            {
+                "conditions": {
+                    "temp_c": { "max": 23 }
+                },
+                "success": false,
+                "result": "Fallo: A esta temperatura, la producción antibiótica crece lo suficientemente lento para que la cepa muera en menos de 2 horas."
+            },
+            {
+                "conditions": {},
+                "success": false,
+                "result": "Inconcluso: no se observaron efectos significativos en el cultivo."
+            }
+        ]
+    }
+}
