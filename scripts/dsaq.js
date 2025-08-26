@@ -36,7 +36,6 @@ const renderExperiment = () => {
             variables[key] = Number(value);
             variables.total += variables[key];
         });
-        alert("Se ha iniciado un experimento, por favor espera 1 minuto para ver los resultados.");
         renderExecution();
         reportes.push({try: reportes.length + 1, result: checkResult(variables)});
         localStorage.setItem('dsaq', JSON.stringify(reportes));

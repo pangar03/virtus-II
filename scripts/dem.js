@@ -39,8 +39,6 @@ const renderExperiment = () => {
         formData.forEach((value, key) => {
             variables[key] = Number(value);
         });
-        
-        alert("Se ha iniciado un experimento, por favor espera 1 minuto para ver los resultados.");
         renderExecution();
         reportes.push({try: reportes.length + 1, result: checkResult(variables)});
         localStorage.setItem('dem', JSON.stringify(reportes));
