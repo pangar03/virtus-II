@@ -36,23 +36,23 @@ const renderExperiment = () => {
             variables[key] = Number(value);
             variables.total += variables[key];
         });
-        renderExecution();
-        reportes.push({try: reportes.length + 1, result: checkResult(variables)});
+        renderExecution(variables);
         localStorage.setItem('dsaq', JSON.stringify(reportes));
     });
 };
 
-const renderExecution = () => {
+const renderExecution = (variables) => {
     let timer = 160;
     const interval = setInterval(() => {
         monitor.innerHTML = `
-            <h1>Ejecutando el experimento...</h1>
-            <h2>Tiempo restante: ${timer} segundos</h2>
+        <h1>Ejecutando el experimento...</h1>
+        <h2>Tiempo restante: ${timer} segundos</h2>
         `;
         timer--;
         if (timer < 0) {
             clearInterval(interval);    
             alert("El experimento ha finalizado.");
+            reportes.push({try: reportes.length + 1, result: checkResult(variables)});
             renderDashboard();
         }
     }, 1000);

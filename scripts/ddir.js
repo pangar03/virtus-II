@@ -45,13 +45,12 @@ const renderExperiment = () => {
         formData.forEach((value, key) => {
             variables[key] = Number(value) || String(value);
         });
-        renderExecution();
-        reportes.push({try: reportes.length + 1, result: checkResult(variables)});
+        renderExecution(variables);
         localStorage.setItem('ddir', JSON.stringify(reportes));
     });
 };
 
-const renderExecution = () => {
+const renderExecution = (variables) => {
     let timer = 270;
     const interval = setInterval(() => {
         monitor.innerHTML = `
@@ -62,6 +61,7 @@ const renderExecution = () => {
         if (timer < 0) {
             clearInterval(interval);    
             alert("El experimento ha finalizado.");
+            reportes.push({try: reportes.length + 1, result: checkResult(variables)});
             renderDashboard();
         }
     }, 1000);

@@ -37,22 +37,22 @@ const renderExperiment = () => {
         formData.forEach((value, key) => {
             variables[key] = Number(value);
         });
-        renderExecution();
-        reportes.push({try: reportes.length + 1, result: checkResult(variables)});
+        renderExecution(variables);
         localStorage.setItem('dgam', JSON.stringify(reportes));
     });
 };
 
-const renderExecution = () => {
+const renderExecution = (variables) => {
     let timer = 240;
     const interval = setInterval(() => {
         monitor.innerHTML = `
-            <h1>Ejecutando el experimento...</h1>
-            <h2>Tiempo restante: ${timer} segundos</h2>
+        <h1>Ejecutando el experimento...</h1>
+        <h2>Tiempo restante: ${timer} segundos</h2>
         `;
         timer--;
         if (timer < 0) {
             clearInterval(interval);    
+            reportes.push({try: reportes.length + 1, result: checkResult(variables)});
             alert("El experimento ha finalizado.");
             renderDashboard();
         }
