@@ -21,13 +21,13 @@ const renderExperiment = () => {
             <input type="number" id="sensor" name="sensors_pct" placeholder="Porcentaje de activación" min="0" max="100" value="0">
             <label for="pattern">Patrón de movimiento (ZigZag/Recto)</label>
             <select id="pattern" name="pattern">
-                <option value="zigzag">ZigZag</option>
                 <option value="recto">Recto</option>
+                <option value="zigzag">ZigZag</option>
             </select>
             <label for="terrain">Tipo de terreno (Suave/Duro)</label>
             <select id="terrain" name="terrain">
+            <option value="rough">Duro</option>
                 <option value="soft">Suave</option>
-                <option value="rough">Duro</option>
             </select>
             <button type="submit">Iniciar Experimento</button>
         </form>
@@ -53,7 +53,7 @@ const renderExperiment = () => {
 };
 
 const renderExecution = () => {
-    let timer = 3;
+    let timer = 270;
     const interval = setInterval(() => {
         monitor.innerHTML = `
             <h1>Ejecutando el experimento...</h1>

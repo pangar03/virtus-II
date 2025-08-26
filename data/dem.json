@@ -3,7 +3,7 @@
         "mission": "Conseguir que la bacteria nativa produzca un antibiótico útil sin perder viabilidad.",
         "variables": {
             "temp_c": { "unit": "°C", "min": 0, "max": 45 },
-            "Ixetornifin": { "unit": "ml", "min": 0, "max": 20 },
+            "Ixetornifin": { "unit": "ul", "min": 0, "max": 20 },
             "Silvatos": { "unit": "ml", "min": 0, "max": 5 },
             "iron_pct": { "unit": "%", "min": 0, "max": 20 },
             "amber_light_min": { "unit": "min", "min": 0, "max": 10 }
@@ -20,7 +20,7 @@
                     "Silvatos": { "min": 1 }
                 },
                 "success": false,
-                "result": "Fallo: Ixetornifin > 6 ml combinado con Silvatos provoca mutación; se pierde la producción antibiótica."
+                "result": "Fallo: Ixetornifin > 6 ul combinado con Silvatos provoca mutación; se pierde la producción antibiótica."
             },
             {
                 "conditions": { "iron_pct": { "min": 6 } },

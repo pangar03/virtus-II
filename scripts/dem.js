@@ -17,7 +17,7 @@ const renderExperiment = () => {
             <input type="number" id="temperature" name="temp_c" placeholder="Temperatura" min="-273" value="0">
             <label for="silvatos">Silvatos (mL)</label>
             <input type="number" id="silvatos" name="Silvatos" placeholder="Cantidad de Silvatos" min="0" value="0">
-            <label for="ixetornifin">Ixetornifin (mL)</label>
+            <label for="ixetornifin">Ixetornifin (uL)</label>
             <input type="number" id="ixetornifin" name="Ixetornifin" placeholder="Cantidad de Ixetornifin" min="0" value="0">
             <label for="ambar">Tiempo de exposición a Luz ámbar (min)</label>
             <input type="number" id="ambar" name="amber_light_min" placeholder="Tiempo de exposición" min="0" value="0">
@@ -48,7 +48,7 @@ const renderExperiment = () => {
 };
 
 const renderExecution = () => {
-    let timer = 3;
+    let timer = 180;
     const interval = setInterval(() => {
         monitor.innerHTML = `
             <h1>Ejecutando el experimento...</h1>
