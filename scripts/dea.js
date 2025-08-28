@@ -47,7 +47,7 @@ const renderExperiment = () => {
 };
 
 const renderExecution = () => {
-    let timer = 180;
+    let timer = 120;
     const interval = setInterval(() => {
         monitor.innerHTML = `
         <h1>Ejecutando el experimento...</h1>
